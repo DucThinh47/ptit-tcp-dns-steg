@@ -1,6 +1,0 @@
-DANH SACH PORT TIM DUOC: ****, ****, ****, ****, ****, ****, ****, ****, ****, ****, ****, ****, **** 
-SO GOI TIN TCP CO CHUA THONG DIEP LA: **
-SO GOI TIN DNS CO CHUA THONG DIEP LA: **
-THONG DIEP THU DUOC DUA VAO DANH SACH PORT: ****_********
-THONG DIEP THU DUOC DUOC VAO DNS QUERIES: *******_******_***
-
