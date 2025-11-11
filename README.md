@@ -54,33 +54,33 @@ Bài lab cũng chỉ ra cách để phát hiện kỹ thuật này, đây là c�
 ## Thực hành
 Thực hiện kiểm tra ping từ `sender` đến `receiver` và quan sát trên wireshark xem có bắt được gói tin không:
 
-![img](0)
+![img](https://github.com/DucThinh47/ptit-tcp-dns-steg/blob/main/images/image0.png?raw=true)
 
 Mở Wireshark trên máy `monitor`:
 
-![img](1)
+![img](https://github.com/DucThinh47/ptit-tcp-dns-steg/blob/main/images/image1.png?raw=true)
 
 Trên máy `sender`, cấp quyền thực thi cho script `tcp_covert.sh`:
 
     chmod +x tcp_covert.sh
 
-![img](2)
+![img](https://github.com/DucThinh47/ptit-tcp-dns-steg/blob/main/images/image2.png?raw=true)
 
 Tiến hành thực thi script `tcp_covert.sh`:
 
     sudo  ./tcp_covert.sh
 
-![img](3)
+![img](https://github.com/DucThinh47/ptit-tcp-dns-steg/blob/main/images/image3.png?raw=true)
 
 Với kỹ thuật giấu tin này, Port đích thường nằm trong khoảng `8000-8126` (tương ứng ASCII 32-126 + 8000). Các port nhiễu thường nằm ngoài khoảng này hoặc không theo quy tắc.
 
 Trên máy `monitor`, quan sát Wireshark, tìm ra các gói tin có thông điệp ẩn giấu:
 
-![img](4)
+![img](https://github.com/DucThinh47/ptit-tcp-dns-steg/blob/main/images/image4.png?raw=true)
 
 Sau khi tìm ra danh sách các gói tin, ghi nhớ số lượng gói tin, liệt kê giá trị Destination port field tương ứng của từng gói tin vào trong nội dung file `decode_port`:
 
-![img](5)
+![img](https://github.com/DucThinh47/ptit-tcp-dns-steg/blob/main/images/image5.png?raw=true)
 
 Sau đó thực thi file để tìm ra thông điệp gốc:
 
@@ -94,19 +94,19 @@ Trên máy `sender`, cấp quyền thực thi cho script `dns_covert.sh`:
 
     chmod +x dns_covert.sh
 
-![img](6)
+![img](https://github.com/DucThinh47/ptit-tcp-dns-steg/blob/main/images/image6.png?raw=true)
 
 Tiến hành thực thi script `dns_covert.sh`:
 
     sudo ./dns_covert.sh
 
-![img](7)
+![img](https://github.com/DucThinh47/ptit-tcp-dns-steg/blob/main/images/image7.png?raw=true)
 
 Đối với kỹ thuật giấu tin này, tên miền chứa subdomain đặc biệt (ví dụ: *.secret.ptit). Độ dài subdomain cố định (thường 3-5 ký tự). Không có truy vấn ngược (PTR record) đi kèm.
 
 Trên Wireshark, quan sát, lọc ra các gói có chứa thông điệp ẩn:
 
-![img](8)
+![img](https://github.com/DucThinh47/ptit-tcp-dns-steg/blob/main/images/image8.png?raw=true)
 
 Ghi nhớ số lượng gói tin có chứa thông điệp ẩn, tìm ra thông điệp ẩn và ghi kết quả vào file `answer.txt` trên máy receiver (chú ý, đối với số gói tin, ghi vào bên cạnh thông điệp tìm được, ví dụ (`thong_diep 10`)).
 
